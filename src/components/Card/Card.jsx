@@ -1,9 +1,12 @@
-function card(){
+import Icon from "../Icon/Icon";
+import './Card.css';
+
+function card({ iconName }){
  return(
-    <div>
-        <span>
-         
-        </span>
+    <div className="card">
+        
+         <Icon name={ iconName }/>
+        
     </div>
  )
 }

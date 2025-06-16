@@ -1,11 +1,10 @@
 
 import './App.css'
-import Icon from './components/Icon/icon'
-
+import Grid from './components/Grid/Grid'
 function App() {
   return (
     <>
-      <Icon />
+     <Grid numberOfCard={9} /> 
     </>
   )
 }
