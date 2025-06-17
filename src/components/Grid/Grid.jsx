@@ -1,24 +1,11 @@
 
 import { useState } from "react";
 import Card from "../card/Card"
-
+import isWinner from "../../helpers/checkWinner";
+import { ToastContainer, toast } from 'react-toastify';
 import './Grid.css';
+import "react-toastify/dist/ReactToastify.css";
 
-function isWinner(board ,symbol){
-        if(board[0]===board[1] && board[1]===board[2] && board[2]===symbol) return symbol ;
-        if(board[3]===board[4] && board[4]===board[5] && board[5]===symbol) return symbol ;
-        if(board[6]===board[7] && board[7]===board[8] && board[8]===symbol) return symbol ;
-        
-        if(board[0]===board[3] && board[3]===board[6] && board[6]===symbol) return symbol ;
-        if(board[1]===board[4] && board[4]===board[7] && board[7]===symbol) return symbol ;
-        if(board[2]===board[5] && board[5]===board[8] && board[8]===symbol) return symbol ;
-        
-        if(board[0]===board[4] && board[4]===board[8] && board[8]===symbol) return symbol ;
-        if(board[2]===board[4] && board[4]===board[6] && board[6]===symbol) return symbol ;
-       
-        return "";
-
-    }
 
 function Grid({numberOfCard}){
     const[turn , setTurn] = useState(true); //flase value =>X turn , true value =>O turn
@@ -34,6 +21,7 @@ function Grid({numberOfCard}){
         const win =isWinner(board, turn ? "O" : "X")
         if(win){
             setWinner(win);
+            toast.success(`Congraculation ${win} win the game`);
         }
         setBoard([...board]);
         setTurn(!turn);
@@ -46,11 +34,12 @@ function Grid({numberOfCard}){
     }
 
     return(
-        <>
+        <div className="grid-wrapper">
            {winner &&(
             <>
-            <h1 className="turn-highlight">winner is{winner}</h1>
+            <h1 className="turn-highlight">winner is  {winner}</h1>
             <button className="reset" onClick={reset}>Reset Game </button>
+            <ToastContainer  position="top-center"/>
             </>
             )}
         <h1 className="turn-highlight"> Current Turn: {(turn) ? 'O' : 'X'} </h1>
@@ -60,7 +49,7 @@ function Grid({numberOfCard}){
             return<Card onPlay={play} player={value}  key={idx} index={idx}/>
         })}
         </div>
-        </>
+        </div>
         
 
     )

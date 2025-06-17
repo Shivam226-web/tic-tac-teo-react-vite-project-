@@ -1,3 +1,7 @@
+.grid-wrapper{
+    max-width: 400px;
+}
+
 .grid{
     height: 400px;
     width: 400px;
@@ -13,9 +17,10 @@
 }
 
 .reset{
-    padding: '1rem';
+    padding: 1rem;
     color: white;
     background-color: var(--resetGreen);
     border-radius: 10px;
     border: none;
+    width: 100%;
 }

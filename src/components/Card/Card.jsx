@@ -12,7 +12,7 @@ function card({ onPlay , player , index }){
    }
    
  return(
-    <div className="card" onClick={() => onPlay(index)}>
+    <div className="card" onClick={() => player==="" && onPlay(index)}>
         
          {icon}
         
